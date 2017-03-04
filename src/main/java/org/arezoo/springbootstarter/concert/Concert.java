@@ -26,12 +26,12 @@ public class Concert {
 		this.venue = venue;
 		this.date = date;
 	}
-	public Concert(String id, String artist, String venue, int year,int month,int day) {
+	public Concert(String id, String artist, String venue, int year,int month,int day,int hour,int min) {
 		super();
 		this.id = id;
 		this.artist = artist;
 		this.venue = venue;
-		setDate(year,month,day);
+		setDate(year,month,day,hour,min);
 	}
 	public String getId() {
 		return id;
@@ -58,11 +58,13 @@ public class Concert {
 		this.date = date;
 	}
 	
-	public void setDate(int year,int month,int day){
+	public void setDate(int year,int month,int day,int hour,int min){
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.YEAR, year);
 		cal.set(Calendar.MONTH, month);
 		cal.set(Calendar.DAY_OF_MONTH, day);
+		cal.set(Calendar.HOUR_OF_DAY, hour);
+		cal.set(Calendar.MINUTE,min);
 		date = cal.getTime();
 	}
 
