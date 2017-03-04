@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"/>
+		<style>
+			body{
+				background-color: #b0ba71;
+				text-align: center;
+				color: #352760;
+			}
+			.title-text{
+				font-size: 1.5em;
+				text-decoration: underline;
+			}
+			
+				
+			div{
+				display: block;
+ 				margin-left: auto;
+  				margin-right: auto;
+			}
+			div.col-md-2{
+				padding: 5px;
+			}
+		</style>
+	</head>
+	
+<body>
+	<h1>Concert List</h1>
+	<div class="container-fluid">
+		<div class="row title-text">
+			<div class="col-md-1"></div>
+			<div class="col-md-2"></div>
+			<div class="col-md-2">Artist</div>
+			<div class="col-md-2">Venue</div>
+			<div class="col-md-2">Date</div>
+			<div class="col-md-2"></div>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row" th:if="${concerts.empty}">
+			<div class="col-md-12">No Upcoming Concerts</div>
+		</div>
+		<div class="row" th:each="concert : ${concerts}">
+			<div class="col-md-1"></div>
+			<div class="col-md-2"></div>
+			<div class="col-md-2" th:text="${concert.artist}">Artist</div>
+			<div class="col-md-2" th:text="${concert.venue}">Venue</div>
+			<div class="col-md-2" th:text="${#dates.format(concert.date,'dd MMM yyyy')}">01 May 2017</div>
+			<div class="col-md-2"></div>
+			<div class="col-md-1"></div>
+		</div>
+		
+	</div>
+	
+</body>
+</html>
+
